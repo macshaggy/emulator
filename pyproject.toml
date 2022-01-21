@@ -1,15 +1,17 @@
 [tool.poetry]
 name = "emulator"
 version = "0.1.0"
-description = "GameBoy emulator implemented in Python"
+description = "GameBoy emulator written in Python from pythoninspired.com"
 authors = ["Jason K Bellew <796886+macshaggy@users.noreply.github.com>"]
 license = "GPL"
 
 [tool.poetry.dependencies]
 python = "^3.10"
+hypothesis = "^6.34.2"
 
 [tool.poetry.dev-dependencies]
 pycodestyle = "^2.8.0"
+ipython = "^8.0.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

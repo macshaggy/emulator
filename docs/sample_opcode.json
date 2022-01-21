@@ -1,0 +1,18 @@
+{
+	"unprefixed": {
+		"0x00": {
+			"mnemonic": "NOP",
+			"bytes": 1,
+			"cycles": [4],
+			"operands": [],
+			"immediate": true,
+			"flags": {
+				"Z": "-",
+				"N": "-",
+				"H": "-",
+				"C": "-"
+			}
+		}
+	}
+}
+
