@@ -48,21 +48,21 @@ def load_opcodes(file: Path = Path("data/Opcodes.json")) -> dict:
     has codes in two parts `unprefixed` and `cbprefixed`. The first and second
     elements are the prefix codes.
     """
-    def _get_opcodes(opcodes_json: dict) -> dict:
-        new_dict = {}
-        for key in list(opcodes_json.keys()):
-            my_dict = {}
-            my_dict["opcode"] = int(key, base=16)
-
-            for el in list(opcodes_json[key].keys()):
-                my_dict[el] = opcodes_json[key][el]
-
-            new_dict[int(key, base=16)] = my_dict
-
-        return new_dict
-
     def _get_operands(operands_list: list) -> list:
-        pass
+        op_list = []
+        for operand in operands_list:
+            name = operand.get('name')
+            immediate = operand.get('immediate')
+            bytes = operand.get('bytes')
+            value = operand.get('value')
+            adjust = operand.get('adjust')
+
+            op_list.append(Operand(immediate=immediate,
+                                   name=name,
+                                   bytes=bytes,
+                                   value=value,
+                                   adjust=adjust))
+        return op_list
 
     def _get_opcodes(opcodes_json: dict) -> dict:
         opcodes_dict = {}
@@ -82,11 +82,10 @@ def load_opcodes(file: Path = Path("data/Opcodes.json")) -> dict:
                                                bytes=bytes,
                                                mnemonic=mnemonic,
                                                comment=comment)
-            return opcodes_dict
+        return opcodes_dict
 
     opcodes_file = json.load(file.open())
     prefix_json, reg_json = opcodes_file['cbprefixed'],\
         opcodes_file['unprefixed']
 
-    # This seems to repeat _get_opcode
     return _get_opcodes(prefix_json), _get_opcodes(reg_json)
