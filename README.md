@@ -15,3 +15,5 @@ Testing is using [hypothesis](https://pypi.org/project/hypothesis/) so that is a
 
 ## Documenting
 I will start documenting things both in code, logging stumbling blocks, and why I did what I did, so that, this repo could be used to teach or help point others in the opposite direction. I may start a website on my personal domain but I'll wait on that one.
+
+The log is [here](docs/developer_log.md).
