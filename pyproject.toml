@@ -11,7 +11,6 @@ hypothesis = "^6.34.2"
 
 [tool.poetry.dev-dependencies]
 pycodestyle = "^2.8.0"
-ipython = "^8.0.0"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
