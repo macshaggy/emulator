@@ -1,1 +1,2 @@
-from . gamepyboy import read_cartridge_metadata
+from . import gamepyboy
+from . import instructions

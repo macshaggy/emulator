@@ -13,3 +13,7 @@ and then load the Opcodes table:
     prefix_ops, regular_ops = gpb.load_opcodes()
 
 The opcodes will be used later as I'm just now starting the next page on the site, ["Game Boy Emulator: Writing the Z80 Disassembler"](https://www.inspiredpython.com/course/game-boy-emulator/game-boy-emulator-writing-the-z80-disassembler). That is the next steps into the project. And I'll write any problems/solutions that I may come across here in this log.
+
+### 4 Feb 2022 - 1632 hrs.
+
+Well, I finally figured out that the tests folder shouldn't be buried within the game directory. There were imports that had to be corrected in GamePyBoy/__init__.py so that pytest and hypothesis could find the correct files and conduct the test. It was successful as now the project has pass the current test.

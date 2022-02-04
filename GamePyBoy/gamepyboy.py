@@ -2,7 +2,7 @@ import struct
 import json
 from collections import namedtuple
 from pathlib import Path
-from Instructions import Operand, Instruction
+from .instructions import Operand, Instruction
 
 
 FIELDS = [

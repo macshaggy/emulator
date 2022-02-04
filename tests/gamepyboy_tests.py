@@ -1,10 +1,9 @@
 import sys
+import os
 import hypothesis.strategies as st
 from hypothesis import given
 
-from GamePyBoy.gamepyboy import read_cartridge_metadata
-
-from . import gamepyboy
+from context import gamepyboy
 
 
 HEADER_START = 0x100
