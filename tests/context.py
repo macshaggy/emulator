@@ -3,4 +3,4 @@ import sys
 sys.path.insert(0, os.path.abspath(os.path
                                    .join(os.path.dirname(__file__), '..')))
 
-from GamePyBoy import gamepyboy, instructions
+from GamePyBoy import gamepyboy, instructions, decoder
