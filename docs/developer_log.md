@@ -22,3 +22,13 @@ Doing research on reading the cartridge data. Cartridge header is can be read bu
 ### 4 Feb 2022 - 1632 hrs.
 
 Well, I finally figured out that the tests folder shouldn't be buried within the game directory. There were imports that had to be corrected in GamePyBoy/__init__.py so that pytest and hypothesis could find the correct files and conduct the test. It was successful as now the project has pass the current test.
+
+### 6 Feb 2022 - 1611 hrs.
+
+The decoder work is essential for understanding & creating the emulato of the Z80 cpu. (Per the web article this is not entirely correct).
+
+The data section of the decoder is just a generic bytestring and will be replaced with the emulator's memory banks.
+
+#### 1752 hrs.
+
+I think I have the decoder working. I couldn't use the example given in the article as the gamefile isn't the same exact one. But I've read a different location and pulled just the one byte and compared it to the regular opcode and it is identical. So, I now know that decode and read are working in the manner expected. ```test_decoder.py``` should be run like any python file from the root directory and not with pytest (yet).
