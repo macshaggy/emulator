@@ -32,3 +32,13 @@ The data section of the decoder is just a generic bytestring and will be replace
 #### 1752 hrs.
 
 I think I have the decoder working. I couldn't use the example given in the article as the gamefile isn't the same exact one. But I've read a different location and pulled just the one byte and compared it to the regular opcode and it is identical. So, I now know that decode and read are working in the manner expected. ```test_decoder.py``` should be run like any python file from the root directory and not with pytest (yet).
+
+### 13 Feb 2022 - 1213 hrs.
+
+Whew, I was having issues with testing and running the program due to circular imports and relative imports bs. I finally figured it out with a context.py file for the testing and everything is run from the emulator directory instead of the GamePyBoy directory.
+
+The directory structure is now pretty good.
+
+#### 1240 hrs.
+
+Well, that was quick to get the disassembler working. In order to test and run everything make sure that you are in the emulator directory. You will need to do a couple of things. First you will need to import Path from pathlib that is for the decoder. Then import sys and prefix sys.path with the GamePyBoy directory. Next import gamepyboy and create the decorder. One the decoder is created pass that to gamepyboy.disassemble, the starting point which should be 0x150 and the # of lines. You should get what looks like the assembly of the game file.

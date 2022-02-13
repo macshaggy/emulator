@@ -1,8 +1,56 @@
 import sys
+import json
 from dataclasses import dataclass
 from pathlib import Path
+from instructions import Instruction, Operand
 
-from .gamepyboy import load_opcodes
+
+def load_opcodes(file: Path) -> dict:
+    """Load the opcodes file and parse into two dicts
+    Args:
+        file (Path, optional): [Path obj representing the file].
+    Returns:
+        dict: [returns the parsed json file opcodes.]
+    """
+    def _get_operands(operands_list: list) -> list:
+        op_list = []
+        for operand in operands_list:
+            name = operand.get('name')
+            immediate = operand.get('immediate')
+            bytes = operand.get('bytes')
+            value = operand.get('value')
+            adjust = operand.get('adjust')
+            op_list.append(Operand(immediate=immediate,
+                                   name=name,
+                                   bytes=bytes,
+                                   value=value,
+                                   adjust=adjust))
+        return op_list
+
+    def _get_opcodes(opcodes_json: dict) -> dict:
+        opcodes_dict = {}
+        for key in list(opcodes_json.keys()):
+            opcode = int(key, base=16)
+            operands = _get_operands(opcodes_json[key]["operands"])
+            immediate = opcodes_json[key].get("immediate")
+            cycles = opcodes_json[key].get("cycles")
+            bytes = opcodes_json[key].get("bytes")
+            mnemonic = opcodes_json[key].get("mnemonic")
+            comment = opcodes_json[key].get("comment")
+            opcodes_dict[opcode] = Instruction(opcode=opcode,
+                                               immediate=immediate,
+                                               operands=operands,
+                                               cycles=cycles,
+                                               bytes=bytes,
+                                               mnemonic=mnemonic,
+                                               comment=comment)
+        return opcodes_dict
+
+    opcodes_file = json.load(file.open())
+    prefix_json, reg_json = opcodes_file['cbprefixed'],\
+        opcodes_file['unprefixed']
+
+    return _get_opcodes(prefix_json), _get_opcodes(reg_json)
 
 
 @dataclass
