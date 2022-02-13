@@ -42,3 +42,7 @@ The directory structure is now pretty good.
 #### 1240 hrs.
 
 Well, that was quick to get the disassembler working. In order to test and run everything make sure that you are in the emulator directory. You will need to do a couple of things. First you will need to import Path from pathlib that is for the decoder. Then import sys and prefix sys.path with the GamePyBoy directory. Next import gamepyboy and create the decorder. One the decoder is created pass that to gamepyboy.disassemble, the starting point which should be 0x150 and the # of lines. You should get what looks like the assembly of the game file.
+
+#### 1634 hrs.
+
+Removed the dev branch. I will create branches for the next piece I'm working on. Since it the next piece is the z80 cpu I'll name it z80. Since I'll be working on that branch I'll publish it and then merge/delete z80 when I have it working so follow that branch for development notes.

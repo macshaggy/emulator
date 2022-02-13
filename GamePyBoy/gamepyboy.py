@@ -1,5 +1,4 @@
 import struct
-import json
 import sys
 from collections import namedtuple
 from pathlib import Path
